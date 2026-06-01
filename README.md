@@ -1,8 +1,8 @@
 # Anyquests
 
-![PyPI - Version](https://img.shields.io/pypi/v/anyquests)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anyquests)
-![PyPI - License](https://img.shields.io/pypi/l/anyquests)
+[![PyPI - Version](https://img.shields.io/pypi/v/anyquests)](https://pypi.org/project/anyquests/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anyquests)](https://pypi.org/project/anyquests/)
+[![PyPI - License](https://img.shields.io/pypi/l/anyquests)](https://github.com/abel1502/anyquests/blob/master/LICENSE)
 
 **Anyquests** is a transparent wrapper around either [requests](https://github.com/psf/requests)
 or [niquests](https://github.com/jawah/niquests) which doesn't install either automatically.
@@ -91,7 +91,7 @@ recommended solution is to:
 
 ## Implementation
 
-This package consists of just [25 lines of code](./src/anyquests/__init__.py),
+This package consists of just [25 lines of code](https://github.com/abel1502/anyquests/blob/master/src/anyquests/__init__.py),
 including empty lines and a multiline error message. It attempts
 to import `niquests`, then in case of failure, attempts to import
 `requests`, then in case of another failure raises an `ImportError`
