@@ -18,6 +18,16 @@ Rather than depending on one or the other, package authors can depend on anyques
 and let the end user decide which library to install. Anyquests will pick
 whichever is available, prioritizing niquests.
 
+## I am an end user, which one to choose?
+
+If you don't have any personal preference yet, choose `niquests`. `niquests` is
+a fork of `requests` which supports newer features such as HTTP/3 over QUIC.
+Be aware, however, that by default installing `niquests` will shadow `urllib3`
+with a different, improved implementation.
+If this is a concern for you, see https://niquests.readthedocs.io/en/latest/community/faq.html#cohabitation
+for instructions on how to disable that. See also https://niquests.readthedocs.io/en/latest/community/faq.html#what-is-urllib3-future
+for an explanation of why `niquests` does that.
+
 ## Usage
 
 Add `anyquests` to the dependencies in your `pyproject.toml`. Then just import
