@@ -1,5 +1,9 @@
 # Anyquests
 
+![PyPI - Version](https://img.shields.io/pypi/v/anyquests)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anyquests)
+![PyPI - License](https://img.shields.io/pypi/l/anyquests)
+
 **Anyquests** is a transparent wrapper around either [requests](https://github.com/psf/requests)
 or [niquests](https://github.com/jawah/niquests) which doesn't install either automatically.
 
@@ -30,8 +34,13 @@ for an explanation of why `niquests` does that.
 
 ## Usage
 
-Add `anyquests` to the dependencies in your `pyproject.toml`. Then just import
-the library with:
+Add `anyquests` to the dependencies in your `pyproject.toml`, for example by running:
+
+```shell
+uv add anyquests
+```
+
+Then just import the library with:
 
 ```python
 import anyquests
@@ -50,6 +59,48 @@ switch to `niquests` when available.
 
 Note that this package does not impose any restrictions on the versions of
 either `requests` or `niquests`.
+
+### Typing
+
+By default a type checker cannot know the members of `anyquests` or their types.
+This can be addressed with separate type stubs, but this would create tight coupling
+to specific versions of `requests` and `niquests`. Instead, since `niquests`
+promises to maintain full backwards compatibility with `requests`, the
+recommended solution is to:
+
+1. Include `anyquests` and `requests` as dependencies in your `pyproject.toml`.
+2. Include the following among your imports:
+   
+   ```python
+   from typing import TYPE_CHECKING
+
+   import anyquests
+   if TYPE_CHECKING:
+       import requests as anyquests
+   ```
+   
+   Alternatively, if you prefer using the name `requests`, include:
+   
+   ```python
+   from typing import TYPE_CHECKING
+
+   import anyquests as requests
+   if TYPE_CHECKING:
+       import requests
+   ```
+
+## Implementation
+
+This package consists of just [25 lines of code](./src/anyquests/__init__.py),
+including empty lines and a multiline error message. It attempts
+to import `niquests`, then in case of failure, attempts to import
+`requests`, then in case of another failure raises an `ImportError`
+with an explanation and instructions. If an import succeeds, the
+`anyquests` module is fully substituted for the imported module,
+which maintains maximum compatibility and ensures no overhead.
+
+If you believe you found an issue, or have an idea on how to improve
+this package, feel free to [open an issue](https://github.com/abel1502/anyquests/issues).
 
 ## License
 

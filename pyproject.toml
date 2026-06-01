@@ -41,3 +41,4 @@ classifiers = [
 
 [project.urls]
 Repository = "https://github.com/abel1502/anyquests"
+Issues = "https://github.com/abel1502/anyquests/issues"
