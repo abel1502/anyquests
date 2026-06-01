@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "anyquests"
-version = "1.0.0"
+version = "1.0.1"
 description = "Seamlessly depend on requests or niquests depending on what the user has installed"
 readme = "README.md"
 authors = [
