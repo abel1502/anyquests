@@ -19,6 +19,6 @@ except ImportError:
             or:
                 pip install requests
             
-            For more information see: https://github.com/niquests/anyquests#i-am-an-end-user-which-one-to-choose
+            For more information see: https://github.com/abel1502/anyquests#i-am-an-end-user-which-one-to-choose
             """
         )) from None
