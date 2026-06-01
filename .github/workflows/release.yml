@@ -23,6 +23,20 @@ jobs:
         with:
           python-version: "3.14"
 
+      - id: pkg
+        name: Read package version from pyproject
+        run: echo "version=$(uv version --short)" >> "$GITHUB_OUTPUT"
+
+      - name: Verify tag and release names match package version
+        env:
+          VERSION: ${{ steps.pkg.outputs.version }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+        run: |
+          set -euo pipefail
+          test "$TAG_NAME" = "$VERSION"
+          test "$RELEASE_NAME" = "$VERSION"
+
       - name: Build distributions
         run: uv build --no-sources
 
